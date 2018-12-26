@@ -1,0 +1,76 @@
+spring:
+  datasource:
+    username: root
+    password: zaq1ZAQ!
+    filters: mergeStat,wall,logback
+    initialSize: 5
+    maxActive: 50
+    minIdle: 5
+    maxWait: 6000
+    validationQuery: SELECT 'x'
+    testOnBorrow: true
+    testOnReturn: true
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    logAbandoned: true
+    url: jdbc:mysql://localhost:3306/wtim?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&transformedBitIsBoolean=true&useSSL=false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/    # 指定注册中心的地址
+  instance:
+    prefer-ip-address: true
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: client
+      scope: read,write,xx
+      auto-approve-scopes: '.*'
+      access-token-uri: http://192.168.20.234/service/user/oauth/token
+      user-authorization-uri: http://192.168.20.234/service/user/oauth/authorize
+      authorized-grant-types: authorization_code,refresh_token,password
+    resource:
+      id: service-user
+      user-info-uri: http://192.168.20.234/service/user/user/principal/get
+      prefer-token-info: false
+      filter-order: 3
+      
+service-activity: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-bbs: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-et: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-file: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-finance: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-masterdata: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-message: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-order: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-product: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+service-user: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+web-pc: #服务id  
+  ribbon:  
+    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule

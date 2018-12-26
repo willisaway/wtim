@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- 文件输出格式 -->
+	<property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n" />
+	<!-- 开发文件路径 -->
+	<property name="DEV_FILE_PATH" value="c:\\logs" />
+	<!-- test文件路径 -->
+	<property name="TEST_FILE_PATH" value="/tmp/minhang/logs" />
+	<!-- pro文件路径 -->
+	<property name="PRO_FILE_PATH" value="/tmp/minhang/logs" />
+	<property name="APP_NAME" value="user" />
+	
+	<!-- 开发环境 -->
+	<springProfile name="dev">
+		<!-- 每天产生一个文件 -->
+		<appender name="DEV_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<!-- 文件路径 -->
+			<file>${DEV_FILE_PATH}\\${APP_NAME}.info.log</file>
+			<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        		<fileNamePattern>${DEV_FILE_PATH}\\${APP_NAME}.info.%i.log</fileNamePattern>
+        		<minIndex>1</minIndex>
+        		<maxIndex>20</maxIndex>
+    		</rollingPolicy>
+			<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        		<maxFileSize>10MB</maxFileSize>
+    		</triggeringPolicy>
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>${PATTERN}</pattern>
+			</layout>
+		</appender>
+		<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<pattern>${PATTERN}</pattern>
+			</encoder>
+		</appender>
+		
+		<!--业务代码 -->
+		<logger name="com.huaxun" level="debug">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="com.github" level="debug">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<!--log4jdbc >
+    	<logger name="org.apache.ibatis" level="debug"/>
+    	<logger name="org.apache.ibatis.jdbc.ScriptRunner" level="debug" />
+    	<logger name="java.sql" level="debug" />
+    	<logger name="com.mysql" level="debug" />
+    	<logger name="com.mysql.jdbc.CallableStatement" level="debug" />
+    	<logger name="java.sql.Connection" level="debug" />
+    	<logger name="java.sql.Statement" level="debug" />
+    	<logger name="java.sql.PreparedStatement" level="debug" />
+    	<logger name="java.sql.ResultSet" level="debug" />
+    	<logger name="org.springframework" level="debug" /-->
+		<root level="debug">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="DEV_FILE" />
+		</root>
+	</springProfile>
+
+	<!-- 测试环境 -->
+	<springProfile name="test">
+		<!-- 每天产生一个文件 -->
+		<appender name="TEST-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<!-- 文件路径 -->
+			<file>${TEST_FILE_PATH}/${APP_NAME}.info.log</file>
+			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+				<!-- 文件名称 -->
+				<fileNamePattern>${TEST_FILE_PATH}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+				<!-- 文件最大保存历史数量 -->
+				<MaxHistory>100</MaxHistory>
+			</rollingPolicy>
+			
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>${PATTERN}</pattern>
+			</layout>
+		</appender>
+		
+		<root level="info">
+			<appender-ref ref="TEST-FILE" />
+		</root>
+	</springProfile>
+
+	<!-- 生产环境 -->
+	<springProfile name="prd">
+		<appender name="PROD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${PRO_FILE_PATH}/${APP_NAME}.info.log</file>
+			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+				<fileNamePattern>${PRO_FILE_PATH}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+				<MaxHistory>100</MaxHistory>
+			</rollingPolicy>
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>${PATTERN}</pattern>
+			</layout>
+		</appender>
+		<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<pattern>${PATTERN}</pattern>
+			</encoder>
+		</appender>
+		
+		<root level="warn">
+			<appender-ref ref="PROD_FILE" />
+			<appender-ref ref="CONSOLE" />
+		</root>
+	</springProfile>
+	
+</configuration>

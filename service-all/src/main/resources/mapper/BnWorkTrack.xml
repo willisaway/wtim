@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.willisaway.wtim.dao.BnWorkTrackMapper" >
+  <select id="selectIdByMap" parameterType="java.util.Map" resultType="java.lang.Long">
+    select a.row_id from BN_WORK_TRACK a 
+	WHERE a.deleted_flag='0'
+	<if test="cm.rowId != null and cm.rowId !=''">
+      AND a.row_id = #{cm.rowId}
+	</if>
+	<if test="cm.workCode != null and cm.workCode != ''">
+      AND a.work_code LIKE CONCAT('%',#{cm.workCode},'%')
+	</if>
+	<if test="cm.workName != null and cm.workName !=''">
+      AND a.work_name LIKE CONCAT('%',#{cm.workName},'%')
+	</if>
+	<if test="cm.comFlag != null and cm.comFlag!=''">
+      AND a.com_flag = #{cm.comFlag}
+	</if>
+	<if test="cm.originFlag != null and cm.originFlag!=''">
+      AND a.origin_flag = #{cm.originFlag}
+	</if>
+	<if test="cm.impFlag != null and cm.impFlag!=''">
+      AND a.imp_flag = #{cm.impFlag}
+	</if>
+	<if test="cm.commonCondition != null and cm.commonCondition!=''">
+      AND (a.work_code LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.work_name LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.SEND_USER_NAME LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.RECEIVE_USER_NAME LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.IMP_USER_NAME LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.KNOW_DESC LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.WORK_NOTE LIKE CONCAT('%',#{cm.commonCondition},'%')
+          or a.REMARK LIKE CONCAT('%',#{cm.commonCondition},'%'))
+	</if>
+  	order by a.row_id desc
+  </select>  
+  
+</mapper>

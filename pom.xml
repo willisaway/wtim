@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.willisaway</groupId>
+  <artifactId>wtim</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>wtim</name>
+  <url>http://mvnrepository.com/</url>
+
+  <modules>
+    <module>service-all</module>
+    <module>service-all-api</module>
+  </modules>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <junit.version>3.8.1</junit.version>
+    <!-- spring版本号 -->
+    <!-- spring-boot.version>2.0.3.RELEASE</spring-boot.version-->
+    <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+    <!--spring-session.version>1.3.0.RELEASE</spring-session.version-->
+	<!--spring-data-redis.version>1.8.6.RELEASE</spring-data-redis.version-->
+    <!-- mybatis版本号 -->
+    <mybatis.version>3.4.4</mybatis.version>
+    <mybatis-plus.version>2.1.0</mybatis-plus.version>
+    <mysql-connector-java.version>8.0.11</mysql-connector-java.version>
+    <mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
+    
+    <!-- log4j日志文件管理包版本 -->
+	<slf4j.version>1.7.9</slf4j.version>
+	<log4j.version>2.4.1</log4j.version>
+	<disruptor.version>3.3.4</disruptor.version>
+	
+    <fastjson.version>1.2.35</fastjson.version>
+    <poi.version>3.9</poi.version>
+	<jxl.version>2.6.12</jxl.version>
+	<xfire.version>1.2.6</xfire.version>
+	<jsch.version>0.1.53</jsch.version>
+	<jedis.version>2.9.0</jedis.version>
+	<redisson.version>2.7.2</redisson.version>
+	<shiro.version>1.2.4</shiro.version>
+	<quartz.version>2.2.3</quartz.version>
+	<aspectj.version>1.8.9</aspectj.version>
+	<pinyin4j.version>2.5.1</pinyin4j.version>
+	<activemq.version>5.13.3</activemq.version>
+	<jsqlparser.version>0.9.5</jsqlparser.version>
+	<thumbnailator.version>0.4.8</thumbnailator.version>
+	<lombok.version>1.16.20</lombok.version>
+	<lcn.last.version>4.1.0</lcn.last.version>
+	<jackson.version>2.9.7</jackson.version>
+  </properties>
+
+  <!-- 使用最新的spring-boot版本 -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.3.RELEASE</version>
+  </parent>
+  
+  <dependencyManagement>
+    <dependencies>
+      <!--dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-dependencies</artifactId>
+	    <version>${spring-boot.version}</version>
+	    <type>pom</type>
+	    <scope>import</scope>
+      </dependency-->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud-dependencies.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+	  <groupId>commons-net</groupId>
+	  <artifactId>commons-net</artifactId>
+	  <version>3.4</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-lang3</artifactId>
+	  <version>3.4</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>commons-codec</groupId>
+	  <artifactId>commons-codec</artifactId>
+	  <version>1.9</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>commons-digester</groupId>
+	  <artifactId>commons-digester</artifactId>
+	  <version>2.0</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-beanutils</groupId>
+	  <artifactId>commons-beanutils</artifactId>
+	  <version>1.9.2</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-fileupload</groupId>
+	  <artifactId>commons-fileupload</artifactId>
+	  <version>1.3.1</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-io</groupId>
+	  <artifactId>commons-io</artifactId>
+	  <version>2.5</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-logging</groupId>
+	  <artifactId>commons-logging</artifactId>
+	  <version>1.2</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-httpclient</groupId>
+	  <artifactId>commons-httpclient</artifactId>
+	  <version>3.1</version>
+	</dependency>
+	<!-- 缓存 -->
+	<dependency>
+	  <groupId>redis.clients</groupId>
+	  <artifactId>jedis</artifactId>
+	  <version>${jedis.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>com.fasterxml.jackson.core</groupId>
+	  <artifactId>jackson-databind</artifactId>
+	  <version>2.9.7</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.dataformat</groupId>
+		<artifactId>jackson-dataformat-yaml</artifactId>
+		<version>2.9.0</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.redisson</groupId>
+	  <artifactId>redisson</artifactId>
+	  <version>${redisson.version}</version>
+	</dependency>
+	<!-- alibaba工具包 -->
+	<dependency>
+	  <groupId>com.alibaba</groupId>
+	  <artifactId>fastjson</artifactId>
+	  <version>${fastjson.version}</version>
+    </dependency>
+	<!-- 导入java ee -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.1.0</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.5.0-b01</version>
+	</dependency>
+	<!-- 日志文件管理包 -->
+	<!--dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-api</artifactId>
+		<version>${log4j.version}</version>
+	</dependency-->
+<!--	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-slf4j-impl</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>-->
+	<dependency>
+		<groupId>com.lmax</groupId>
+		<artifactId>disruptor</artifactId>
+		<version>${disruptor.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.javassist</groupId>
+		<artifactId>javassist</artifactId>
+		<version>3.15.0-GA</version>
+	</dependency>
+	<!-- activemq -->
+	<dependency>
+		<groupId>org.apache.activemq</groupId>
+		<artifactId>activemq-spring</artifactId>
+		<version>${activemq.version}</version>
+	</dependency>
+	<dependency>
+   		<groupId>net.sf.json-lib</groupId>
+   		<artifactId>json-lib</artifactId>
+   		<version>2.4</version>
+   		<classifier>jdk15</classifier>
+	</dependency>
+	<!-- swagger -->
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger2</artifactId>
+		<version>2.9.2</version>
+	</dependency>
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger-ui</artifactId>
+		<version>2.9.2</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+    	<groupId>org.projectlombok</groupId>
+    	<artifactId>lombok</artifactId>
+    	<version>${lombok.version}</version>
+    	<scope>provided</scope>
+	</dependency>
+	<dependency>
+    	<groupId>javax.xml.bind</groupId>
+    	<artifactId>jaxb-api</artifactId>
+    	<version>2.3.0</version>
+	</dependency>
+	<dependency>
+    	<groupId>com.sun.xml.bind</groupId>
+    	<artifactId>jaxb-core</artifactId>
+    	<version>2.3.0</version>
+	</dependency>
+	<dependency>
+    	<groupId>com.sun.xml.bind</groupId>
+    	<artifactId>jaxb-impl</artifactId>
+    	<version>2.3.0</version>
+	</dependency>
+	
+	
+  </dependencies>
+  
+</project>

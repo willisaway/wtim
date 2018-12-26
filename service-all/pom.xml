@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.github.willisaway</groupId>
+    <artifactId>wtim</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.github.willisaway</groupId>
+  <artifactId>service-all</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>service-all</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <!-- 添加Eureka的依赖 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <!-- 整合ribbon -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    
+    <!-- redis -->
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-redis</artifactId>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql-connector-java.version}</version>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>${mybatis-spring-boot.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.huaxun</groupId>
+      <artifactId>common</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <exclusions>
+	    <exclusion>
+	      <groupId>com.codingapi</groupId>
+          <artifactId>transaction-springcloud</artifactId>
+	    </exclusion>
+	    <exclusion>
+	      <groupId>com.codingapi</groupId>
+          <artifactId>tx-plugins-db</artifactId>
+	    </exclusion>
+	    <exclusion>
+	      <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+	    </exclusion>
+	  </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.willisaway</groupId>
+      <artifactId>service-all-api</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <exclusions>
+	    <exclusion>
+		  <groupId>*</groupId>
+		  <artifactId>*</artifactId>
+		</exclusion>
+	  </exclusions>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <!--编译插件-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+      <!--打包插件-->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

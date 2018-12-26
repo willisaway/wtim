@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    username: root
+    password: zaq1ZAQ!
+    filters: mergeStat,wall,logback
+    initialSize: 5
+    maxActive: 50
+    minIdle: 5
+    maxWait: 6000
+    validationQuery: SELECT 'x'
+    testOnBorrow: true
+    testOnReturn: true
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    logAbandoned: true
+    url: jdbc:mysql://localhost:3306/wtim?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&transformedBitIsBoolean=true&useSSL=false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery.mhwz.net:8761/eureka/    # 指定注册中心的地址
+  instance:
+    prefer-ip-address: true
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: client
+      scope: read,write,xx
+      auto-approve-scopes: '.*'
+      access-token-uri: http://www.mhwz.net/service/user/oauth/token
+      user-authorization-uri: http://www.mhwz.net/service/user/oauth/authorize
+      authorized-grant-types: authorization_code,refresh_token,password
+    resource:
+      id: service-user
+      user-info-uri: http://www.mhwxzz.net/service/user/user/principal/get
+      prefer-token-info: false
+      filter-order: 3
