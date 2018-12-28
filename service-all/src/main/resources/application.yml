@@ -1,8 +1,6 @@
 system:
   cache:
     enable: false
-file:
-  path: C:\WTIM\File
 server:
   port: 8000
 spring:
@@ -12,6 +10,11 @@ spring:
   jackson:
     serialization: 
       write-dates-as-timestamps: true
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
   servlet:
     multipart:
       maxFileSize: 100MB

@@ -1,7 +1,9 @@
+file:
+  path: C:\WTIM\File
 spring:
   datasource:
     username: root
-    password: zaq1ZAQ!
+    password: ""
     filters: mergeStat,wall,logback
     initialSize: 5
     maxActive: 50
@@ -16,15 +18,17 @@ spring:
     removeAbandoned: true
     removeAbandonedTimeout: 1800
     logAbandoned: true
-    url: jdbc:mysql://localhost:3306/wtim?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&transformedBitIsBoolean=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/wtim?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/    # 指定注册中心的地址
+      defaultZone: http://localhost:8761/eureka/
   instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
     prefer-ip-address: true
-
+    
 security:
   oauth2:
     client:
@@ -32,45 +36,11 @@ security:
       client-secret: client
       scope: read,write,xx
       auto-approve-scopes: '.*'
-      access-token-uri: http://192.168.20.234/service/user/oauth/token
-      user-authorization-uri: http://192.168.20.234/service/user/oauth/authorize
+      access-token-uri: http://localhost:8000/oauth/token
+      user-authorization-uri: http://localhost:8000/oauth/authorize
       authorized-grant-types: authorization_code,refresh_token,password
     resource:
-      id: service-user
-      user-info-uri: http://192.168.20.234/service/user/user/principal/get
+      id: service-all
+      user-info-uri: http://localhost:8000/user/principal/get
       prefer-token-info: false
-      filter-order: 3
-      
-service-activity: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-bbs: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-et: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-file: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-finance: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-masterdata: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-message: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-order: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-product: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-service-user: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
-web-pc: #服务id  
-  ribbon:  
-    NFLoadBalancerRuleClassName: com.huaxun.core.loadbalancer.DepRule
+

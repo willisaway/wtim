@@ -1,3 +1,5 @@
+file:
+  path: D:\WTIM\File
 spring:
   datasource:
     username: root
