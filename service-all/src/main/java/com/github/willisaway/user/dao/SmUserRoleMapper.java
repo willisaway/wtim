@@ -1,6 +1,6 @@
 package com.github.willisaway.user.dao;
 
-import com.huaxun.core.base.BaseMapper;
+import com.github.willisaway.core.base.BaseMapper;
 import com.github.willisaway.user.model.SmUserRole;
 
 import java.util.List;

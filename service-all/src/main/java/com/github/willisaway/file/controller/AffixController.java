@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.huaxun.core.base.BaseController;
-import com.huaxun.core.base.ModuleReturn;
-import com.huaxun.core.stream.BufferedServletRequestWrapper;
-import com.huaxun.core.util.LockUtil;
-import com.huaxun.core.util.WebUtil;
+import com.github.willisaway.core.base.BaseController;
+import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
+import com.github.willisaway.core.util.LockUtil;
+import com.github.willisaway.core.util.WebUtil;
 import com.github.willisaway.user.model.Affix;
 import com.github.willisaway.file.service.AffixService;
 import com.github.willisaway.user.api.SmUserClient;

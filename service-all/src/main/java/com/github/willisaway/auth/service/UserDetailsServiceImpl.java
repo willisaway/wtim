@@ -14,7 +14,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.huaxun.core.util.RequestUtil;
+import com.github.willisaway.core.util.RequestUtil;
 import com.github.willisaway.user.model.SmUser;
 import com.github.willisaway.user.model.User;
 import com.github.willisaway.user.service.SmUserRoleService;

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.huaxun.core.base.BaseMapper;
+import com.github.willisaway.core.base.BaseMapper;
 import com.github.willisaway.user.model.SmRoleMenu;
 
 public interface SmRoleMenuMapper extends BaseMapper<SmRoleMenu> {

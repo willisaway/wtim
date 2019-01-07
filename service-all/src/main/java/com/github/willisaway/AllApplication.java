@@ -16,9 +16,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.web.client.RestTemplate;
 
-import com.huaxun.core.annotation.ExcludeFromComponentScan;
-import com.huaxun.core.loadbalancer.RibbonConfiguration;
-import com.huaxun.core.util.SpringUtil;
+import com.github.willisaway.core.annotation.ExcludeFromComponentScan;
+import com.github.willisaway.core.loadbalancer.RibbonConfiguration;
+import com.github.willisaway.core.util.SpringUtil;
 
 @SpringBootApplication
 @EnableDiscoveryClient

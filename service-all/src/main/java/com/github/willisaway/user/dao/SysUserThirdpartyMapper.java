@@ -2,7 +2,7 @@ package com.github.willisaway.user.dao;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.huaxun.core.base.BaseMapper;
+import com.github.willisaway.core.base.BaseMapper;
 import com.github.willisaway.user.model.SysUserThirdparty;
 
 public interface SysUserThirdpartyMapper extends BaseMapper<SysUserThirdparty> {

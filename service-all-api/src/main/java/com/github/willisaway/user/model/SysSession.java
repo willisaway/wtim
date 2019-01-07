@@ -3,7 +3,7 @@ package com.github.willisaway.user.model;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.huaxun.core.base.BaseModel;
+import com.github.willisaway.core.base.BaseModel;
 
 @TableName("sys_session")
 @SuppressWarnings("serial")

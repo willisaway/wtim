@@ -34,7 +34,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.filter.CompositeFilter;
 
 import com.github.willisaway.auth.service.UserDetailsServiceImpl;
-import com.huaxun.core.util.SpringUtil;
+import com.github.willisaway.core.util.SpringUtil;
 
 @Configuration
 @AutoConfigureBefore(AuthorizationServerConfig.class)

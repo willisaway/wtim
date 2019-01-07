@@ -19,14 +19,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.huaxun.core.base.BaseService;
-import com.huaxun.core.base.ModuleReturn;
-import com.huaxun.core.stream.BufferedServletRequestWrapper;
-import com.huaxun.core.support.fastdfs.FileClient;
-import com.huaxun.core.support.security.BASE64Encoder;
-import com.huaxun.core.util.ExceptionUtil;
-import com.huaxun.core.util.FileUtil;
-import com.huaxun.core.util.LockUtil;
+import com.github.willisaway.core.base.BaseService;
+import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
+import com.github.willisaway.core.support.fastdfs.FileClient;
+import com.github.willisaway.core.support.security.BASE64Encoder;
+import com.github.willisaway.core.util.ExceptionUtil;
+import com.github.willisaway.core.util.FileUtil;
+import com.github.willisaway.core.util.LockUtil;
 import com.github.willisaway.file.dao.AffixMapper;
 import com.github.willisaway.user.model.Affix;
 

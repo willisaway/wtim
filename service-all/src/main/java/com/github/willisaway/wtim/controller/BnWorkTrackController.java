@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.github.willisaway.wtim.model.BnWorkTrack;
 import com.github.willisaway.wtim.service.BnWorkTrackService;
-import com.huaxun.core.base.ModuleReturn;
+import com.github.willisaway.core.base.ModuleReturn;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

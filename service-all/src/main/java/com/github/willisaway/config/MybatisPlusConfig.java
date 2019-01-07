@@ -21,7 +21,7 @@ import com.baomidou.mybatisplus.MybatisXMLLanguageDriver;
 import com.baomidou.mybatisplus.entity.GlobalConfiguration;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean;
-import com.huaxun.core.mybatis.SortInterceptor;
+import com.github.willisaway.core.mybatis.SortInterceptor;
 
 @Configuration
 public class MybatisPlusConfig {

@@ -11,9 +11,9 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.huaxun.core.base.BaseService;
-import com.huaxun.core.base.ModuleReturn;
-import com.huaxun.core.util.CheckObject;
+import com.github.willisaway.core.base.BaseService;
+import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.util.CheckObject;
 import com.github.willisaway.user.dao.SmUserRoleMapper;
 import com.github.willisaway.user.model.SmUserRole;
 

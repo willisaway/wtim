@@ -16,9 +16,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import com.huaxun.core.config.RedisConfig;
-import com.huaxun.core.support.jedis.MyRedisTokenStore;
-import com.huaxun.core.util.SpringUtil;
+import com.github.willisaway.core.config.RedisConfig;
+import com.github.willisaway.core.support.jedis.MyRedisTokenStore;
+import com.github.willisaway.core.util.SpringUtil;
 
 @Configuration
 @EnableAuthorizationServer

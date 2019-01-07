@@ -10,7 +10,7 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.huaxun.core.base.BaseService;
+import com.github.willisaway.core.base.BaseService;
 import com.github.willisaway.user.api.SmUserClient;
 import com.github.willisaway.user.dao.SmMenuMapper;
 import com.github.willisaway.user.model.SmMenu;

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.huaxun.core.support.fastdfs.FileClient;
+import com.github.willisaway.core.support.fastdfs.FileClient;
 import com.github.willisaway.file.service.AffixService;
 import com.github.willisaway.user.api.SmUserClient;
 import com.github.willisaway.user.model.SmUser;

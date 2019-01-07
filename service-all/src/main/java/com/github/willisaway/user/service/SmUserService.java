@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.huaxun.core.base.BaseService;
-import com.huaxun.core.base.ModuleReturn;
-import com.huaxun.core.support.Assert;
-import com.huaxun.core.support.login.ThirdPartyUser;
-import com.huaxun.core.util.RedissonUtil;
+import com.github.willisaway.core.base.BaseService;
+import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.support.Assert;
+import com.github.willisaway.core.support.login.ThirdPartyUser;
+import com.github.willisaway.core.util.RedissonUtil;
 import com.github.willisaway.user.api.SmUserClient;
 import com.github.willisaway.user.dao.SmUserMapper;
 import com.github.willisaway.user.dao.SysUserThirdpartyMapper;

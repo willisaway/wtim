@@ -9,8 +9,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.huaxun.core.base.BaseService;
-import com.huaxun.core.base.ModuleReturn;
+import com.github.willisaway.core.base.BaseService;
+import com.github.willisaway.core.base.ModuleReturn;
 import com.github.willisaway.user.dao.SmRoleMenuMapper;
 import com.github.willisaway.user.model.SmRoleMenu;
 import com.github.willisaway.user.model.SmUser;

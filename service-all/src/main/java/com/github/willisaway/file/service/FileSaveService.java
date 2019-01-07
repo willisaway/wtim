@@ -24,12 +24,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
-import com.huaxun.core.base.FileType;
-import com.huaxun.core.base.ModuleReturn;
-import com.huaxun.core.stream.BufferedServletRequestWrapper;
-import com.huaxun.core.stream.InputStreamWrapper;
-import com.huaxun.core.stream.StreamUtil;
-import com.huaxun.core.util.UploadUtil;
+import com.github.willisaway.core.base.FileType;
+import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
+import com.github.willisaway.core.stream.InputStreamWrapper;
+import com.github.willisaway.core.stream.StreamUtil;
+import com.github.willisaway.core.util.UploadUtil;
 
 import lombok.Data;
 

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 
-import com.huaxun.core.base.BaseService;
+import com.github.willisaway.core.base.BaseService;
 import com.github.willisaway.user.dao.SmMenuOperationMapper;
 import com.github.willisaway.user.model.SmMenuOperation;
 import com.github.willisaway.user.model.SmMenuOperationForm;

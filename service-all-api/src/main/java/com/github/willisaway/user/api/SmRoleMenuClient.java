@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
-import com.huaxun.core.base.ModuleReturn;
+import com.github.willisaway.core.base.ModuleReturn;
 
 @FeignClient(name = "service-user")
 public interface SmRoleMenuClient {

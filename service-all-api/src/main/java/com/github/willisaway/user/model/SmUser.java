@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.huaxun.core.base.BaseModel;
+import com.github.willisaway.core.base.BaseModel;
 
 import lombok.Data;
 

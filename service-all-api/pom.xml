@@ -18,8 +18,8 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.huaxun</groupId>
-      <artifactId>common</artifactId>
+      <groupId>com.github.willisaway</groupId>
+      <artifactId>common-core</artifactId>
       <version>0.0.1-SNAPSHOT</version>
       <exclusions>
 	    <exclusion>

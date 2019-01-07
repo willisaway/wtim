@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.huaxun.core.base.ModuleReturn;
-import com.huaxun.core.support.login.ThirdPartyUser;
+import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.support.login.ThirdPartyUser;
 import com.github.willisaway.user.model.SmRole;
 import com.github.willisaway.user.model.SmUser;
 
