@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.github.willisaway.core.base.BaseController;
 import com.github.willisaway.core.base.ModuleReturn;
-import com.github.willisaway.core.util.UploadUtil;
+import com.github.willisaway.common.file.util.UploadUtil;
 import com.github.willisaway.core.util.WebUtil;
 import com.github.willisaway.user.api.SmUserClient;
 import com.github.willisaway.user.model.SmRole;

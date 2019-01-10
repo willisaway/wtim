@@ -29,7 +29,7 @@ import com.github.willisaway.core.base.ModuleReturn;
 import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
 import com.github.willisaway.core.stream.InputStreamWrapper;
 import com.github.willisaway.core.stream.StreamUtil;
-import com.github.willisaway.core.util.UploadUtil;
+import com.github.willisaway.common.file.util.UploadUtil;
 
 import lombok.Data;
 

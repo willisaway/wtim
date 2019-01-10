@@ -22,7 +22,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import com.github.willisaway.core.base.BaseService;
 import com.github.willisaway.core.base.ModuleReturn;
 import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
-import com.github.willisaway.core.support.fastdfs.FileClient;
+import com.github.willisaway.common.file.fastdfs.FileClient;
 import com.github.willisaway.core.support.security.BASE64Encoder;
 import com.github.willisaway.core.util.ExceptionUtil;
 import com.github.willisaway.core.util.FileUtil;

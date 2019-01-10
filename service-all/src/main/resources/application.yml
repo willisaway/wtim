@@ -7,6 +7,8 @@ spring:
   application:
     name: service-all    # 项目名称尽量用小写
   profiles.active: dev
+  main:
+    allow-bean-definition-overriding: true
   jackson:
     serialization: 
       write-dates-as-timestamps: true

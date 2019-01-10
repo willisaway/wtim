@@ -21,22 +21,7 @@
       <groupId>com.github.willisaway</groupId>
       <artifactId>common-core</artifactId>
       <version>0.0.1-SNAPSHOT</version>
-      <exclusions>
-	    <exclusion>
-	      <groupId>com.codingapi</groupId>
-          <artifactId>transaction-springcloud</artifactId>
-	    </exclusion>
-	    <exclusion>
-	      <groupId>com.codingapi</groupId>
-          <artifactId>tx-plugins-db</artifactId>
-	    </exclusion>
-	    <exclusion>
-	      <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-	    </exclusion>
-	  </exclusions>
     </dependency>
-    
   </dependencies>
   <!--被打包项目必须配置项-->  
   <build>  
