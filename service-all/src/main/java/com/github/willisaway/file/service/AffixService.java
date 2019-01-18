@@ -10,8 +10,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.github.willisaway.user.api.SmUserClient;
-import com.github.willisaway.user.model.SmUser;
+import com.github.willisaway.auth.api.SmUserClient;
+import com.github.willisaway.auth.model.SmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.github.willisaway.core.base.BaseService;
 import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.exception.BusinessException;
 import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
 import com.github.willisaway.common.file.fastdfs.FileClient;
 import com.github.willisaway.core.support.security.BASE64Encoder;
@@ -28,7 +29,7 @@ import com.github.willisaway.core.util.ExceptionUtil;
 import com.github.willisaway.core.util.FileUtil;
 import com.github.willisaway.core.util.LockUtil;
 import com.github.willisaway.file.dao.AffixMapper;
-import com.github.willisaway.user.model.Affix;
+import com.github.willisaway.wtim.model.Affix;
 
 /**
  * @Description:TODO
@@ -87,12 +88,12 @@ public class AffixService extends BaseService<AffixMapper,Affix> {
 
 	@SuppressWarnings("rawtypes")
 	public ModuleReturn upload(BufferedServletRequestWrapper request,HttpServletResponse response,MultipartFile file, Map param) throws Exception{
-		ModuleReturn objRtn = new ModuleReturn(1);
+		ModuleReturn objRtn = new ModuleReturn();
 		Affix affix=null;
 		String rpath = param.get("businessId").toString()+"\\"+param.get("affixType")+"\\"+file.getOriginalFilename();
 		
 		//先查询附件表，如果前台分片上传，已有之前的分片 2018年3月26日14:50:58 增加
-		if (objRtn.getReturnValue() > 0) {
+		//if (objRtn.getReturnValue() > 0) {
 			Map paraMap = new HashMap();
 			paraMap.put("businessId", param.get("businessId"));
 			paraMap.put("businessCode", param.get("businessCode"));
@@ -101,21 +102,21 @@ public class AffixService extends BaseService<AffixMapper,Affix> {
 			if (param.get("rowId") != null) {
 				paraMap.put("rowId", param.get("rowId"));
 			}
-			affix = queryOne(paraMap);
-		}
-		if (objRtn.getReturnValue() > 0) {
+			affix = null;//TODO queryOne(paraMap);
+		//}
+		//if (objRtn.getReturnValue() > 0) {
 			try {
 				objRtn = fileSaveService.saveFile(file, rpath);
 			} catch (Exception e) {
 				e.printStackTrace();
-				objRtn.setReturnValue(-1, "上传文件异常!");
+				throw new BusinessException("上传文件异常!");
 			}
-		}
+		//}
 		
 		//维护附件表
-		if (objRtn.getReturnValue() > 0) {
+		//if (objRtn.getReturnValue() > 0) {
 			try {
-				if (objRtn.getReturnValue()>0) {
+				//if (objRtn.getReturnValue()>0) {
 					if(affix==null) {
 						affix = new Affix();
 						affix.setFileName(file.getOriginalFilename());
@@ -141,8 +142,8 @@ public class AffixService extends BaseService<AffixMapper,Affix> {
 								affix.setFileType("other");
 							}
 						}
-						if(objRtn.getReturnPara("md5String") != null) {
-							affix.setMd5String(objRtn.getReturnPara("md5String").toString());
+						if(objRtn.takeData("md5String") != null) {
+							affix.setMd5String(objRtn.takeData("md5String").toString());
 						}
 						affix = this.update(affix);
 					}else {
@@ -154,73 +155,26 @@ public class AffixService extends BaseService<AffixMapper,Affix> {
 						}
 						affix = this.update(affix);
 					}
-					objRtn.setReturnPara("affix", affix);
-				}
+					objRtn.putData("affix", affix);
+				//}
 			} catch (Exception e) {
-				objRtn.setReturnValue(-1, "保存附件失败");
+			    throw new BusinessException("保存附件失败");
 			}
-		}
+		//}
 		return objRtn;
 	}
 
 	public ModuleReturn delete(Long rowId) {
-		ModuleReturn objRtn = new ModuleReturn(1);
+		ModuleReturn objRtn = new ModuleReturn();
 		try {
 			Affix affix = queryById(rowId);
 			objRtn = fileSaveService.deleteFile(affix.getFilePath());
-			if(objRtn.getReturnValue()>0) {
-				delete(rowId, smUserClient.getCurrentUserId());
-			}
+			delete(rowId, smUserClient.getCurrentUserId());
 		} catch (Exception e) {
 			logger.error(ExceptionUtil.getStackTraceAsString(e));
-			objRtn.setReturnValue(-1, "删除失败");
+			throw new BusinessException("删除失败");
 		}
 		
 		return objRtn;
-	}
-	
-	public ModuleReturn updateBusinessId(String businessCode,String affixType,Long oldBusinessId, Long newBusinessId,Long userId) {
-		ModuleReturn objRtn = new ModuleReturn(1);
-		if (objRtn.getReturnValue() > 0) {
-			try {
-				Map<String, Object> params = new HashMap<String, Object>();
-				if(businessCode!=null) {
-					params.put("businessCode", businessCode);
-				}
-				if(affixType!=null) {
-					params.put("affixType", affixType);
-				}
-				params.put("businessId", oldBusinessId);
-				List<Affix> attachList = queryAll(params);
-				for (Affix updateBean : attachList) {
-					updateBean.setBusinessId(newBusinessId);
-					update(updateBean, userId);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				objRtn.setReturnValue(-1, "更新失败");
-			}
-		}
-		return objRtn;
-	}
-
-	public ModuleReturn updateBusinessId(String businessCode,String affixType,Long oldBusinessId, Long newBusinessId) {
-		ModuleReturn objRtn = new ModuleReturn(1);
-		objRtn = this.updateBusinessId(businessCode,affixType,oldBusinessId, newBusinessId,smUserClient.getCurrentUserId());
-		return objRtn;
-	}
-	public ModuleReturn updateBusinessId(Long oldBusinessId, Long newBusinessId) {
-		ModuleReturn objRtn = new ModuleReturn(1);
-		objRtn = this.updateBusinessId(null,null,oldBusinessId, newBusinessId,smUserClient.getCurrentUserId());
-		return objRtn;
-	}
-	
-	public List<Affix> queryAllEncoded(Map<String, Object> params){
-		List<Affix> affixList = queryAll(params);
-		for(int i=0;i<affixList.size();i++) {
-			Affix affix = affixList.get(i);
-			affix.setFilePath(new BASE64Encoder().encode(affix.getFilePath().getBytes()));
-		}
-		return affixList;
 	}
 }

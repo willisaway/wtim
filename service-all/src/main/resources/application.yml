@@ -2,10 +2,10 @@ system:
   cache:
     enable: false
 server:
-  port: 8000
+  port: 8100
 spring:
   application:
-    name: service-all    # 项目名称尽量用小写
+    name: service-wtim    # 项目名称尽量用小写
   profiles.active: dev
   main:
     allow-bean-definition-overriding: true
@@ -21,6 +21,8 @@ spring:
     multipart:
       maxFileSize: 100MB
       maxRequestSize: 100MB
+  cache:
+    type: redis
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 mybatis-plus:
@@ -30,7 +32,7 @@ mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   classpath: com.*.dao.*
   # entity的包
-  typeAliasesPackage: com.github.willisaway.user.model
+  typeAliasesPackage: com.github.willisaway.wtim.model
   # 全局配置
   global-config:
     #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";

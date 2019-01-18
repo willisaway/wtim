@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.willisaway.common.file.fastdfs.FileClient;
 import com.github.willisaway.file.service.AffixService;
-import com.github.willisaway.user.api.SmUserClient;
-import com.github.willisaway.user.model.SmUser;
+import com.github.willisaway.auth.api.SmUserClient;
+import com.github.willisaway.auth.model.SmUser;
 
 @RestController
 @RequestMapping(value = "test")

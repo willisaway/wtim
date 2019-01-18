@@ -1,4 +1,4 @@
-package com.github.willisaway.user.model;
+package com.github.willisaway.wtim.model;
 
 import java.math.BigDecimal;
 import java.util.Date;

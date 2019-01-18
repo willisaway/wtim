@@ -21,9 +21,9 @@ import com.github.willisaway.core.base.ModuleReturn;
 import com.github.willisaway.core.stream.BufferedServletRequestWrapper;
 import com.github.willisaway.core.util.LockUtil;
 import com.github.willisaway.core.util.WebUtil;
-import com.github.willisaway.user.model.Affix;
+import com.github.willisaway.wtim.model.Affix;
 import com.github.willisaway.file.service.AffixService;
-import com.github.willisaway.user.api.SmUserClient;
+import com.github.willisaway.auth.api.SmUserClient;
 
 /**
  * @Description:附件控制器
@@ -50,7 +50,7 @@ public class AffixController extends BaseController {
 	@SuppressWarnings("rawtypes")
 	@PostMapping("uploads")
 	public List<ModuleReturn> uploads(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		ModuleReturn objRtn = new ModuleReturn(1);
+		ModuleReturn objRtn = new ModuleReturn();
 		// 解析非文件参数
 		Enumeration params = request.getParameterNames();
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -83,21 +83,21 @@ public class AffixController extends BaseController {
 	 */
 	@PostMapping("/query")
 	public ModuleReturn query(@RequestParam Map<String, Object> params)throws Exception {
-		ModuleReturn objRtn = new ModuleReturn(1);
-		List<Affix> affixList = affixService.queryAll(params);
-		objRtn.setReturnPara("affixList", affixList);
+		ModuleReturn objRtn = new ModuleReturn();
+		List<Affix> affixList = null;//TODO affixService.queryAll(params);
+		objRtn.putData("affixList", affixList);
 		return objRtn;
 	}
 	
 	@PostMapping("/query/{businessCode}/{businessId}/{affixType}")
 	public ModuleReturn query(@PathVariable String businessCode,@PathVariable Long businessId,@PathVariable String affixType)throws Exception {
-		ModuleReturn objRtn = new ModuleReturn(1);
+		ModuleReturn objRtn = new ModuleReturn();
 		Map<String, Object> params=new HashMap();
 		params.put("businessCode", businessCode);
 		params.put("businessId", businessId);
 		params.put("affixType", affixType);
-		List<Affix> affixList = affixService.queryAll(params);
-		objRtn.setReturnPara("affixList", affixList);
+		List<Affix> affixList = null;//TODO affixService.queryAll(params);
+		objRtn.putData("affixList", affixList);
 		return objRtn;
 	}
 
@@ -110,7 +110,7 @@ public class AffixController extends BaseController {
 	 */
 	@PostMapping("/queryAll")
 	public List<Affix> queryAll(@RequestBody Map<String, Object> params)throws Exception {
-		List<Affix> attachList = affixService.queryAll(params);
+		List<Affix> attachList = null;//TODO affixService.queryAll(params);
 		return attachList;
 	}
 	
@@ -120,15 +120,15 @@ public class AffixController extends BaseController {
 		params.put("businessCode", businessCode);
 		params.put("businessId", businessId);
 		params.put("affixType", affixType);
-		List<Affix> attachList = affixService.queryAll(params);
+		List<Affix> attachList = null;//TODO affixService.queryAll(params);
 		return attachList;
 	}
 	
 	@PostMapping("/queryPage")
 	public ModuleReturn queryPage(@RequestBody Map<String, Object> params)throws Exception {
-		ModuleReturn objRtn = new ModuleReturn(1);
-		Page<Affix> affixList = affixService.query(params);
-		objRtn.setReturnPara("affixList", affixList);
+		ModuleReturn objRtn = new ModuleReturn();
+		Page<Affix> affixList = null;//TODO affixService.query(params);
+		objRtn.putData("affixList", affixList);
 		return objRtn;
 	}
 
@@ -145,17 +145,5 @@ public class AffixController extends BaseController {
 		params.put("BUSINESS_CODE", businessCode);
 		params.put("AFFIX_TYPE", affixType);
 		affixService.deleteByMap(params);
-	}
-
-	@ApiOperation(value = "更新一个附件的来源ID,原因是有些页面数据未保存时，没有id,先临时给个id，保存后再更新一下")
-	@GetMapping(value = "/updateBusinessId/{businessCode}/{affixType}/{oldBusinessId}/{newBusinessId}")
-	public ModuleReturn updateBusinessId(@PathVariable String businessCode,@PathVariable String affixType,@PathVariable Long oldBusinessId, @PathVariable Long newBusinessId){
-		return affixService.updateBusinessId(businessCode,affixType,oldBusinessId, newBusinessId);
-	}
-	
-	@ApiOperation(value = "更新一个附件的来源ID,原因是有些页面数据未保存时，没有id,先临时给个id，保存后再更新一下")
-	@GetMapping(value = "/updateBusinessId/{oldBusinessId}/{newBusinessId}")
-	public ModuleReturn updateBusinessId(Long oldBusinessId, @PathVariable Long newBusinessId){
-		return affixService.updateBusinessId(oldBusinessId, newBusinessId);
 	}
 }

@@ -18,12 +18,12 @@ spring:
     removeAbandoned: true
     removeAbandonedTimeout: 1800
     logAbandoned: true
-    url: jdbc:mysql://localhost:3306/wtim?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&transformedBitIsBoolean=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/wtim?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery.mhwz.net:8761/eureka/
   instance:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
@@ -40,7 +40,7 @@ security:
       user-authorization-uri: http://localhost:8000/oauth/authorize
       authorized-grant-types: authorization_code,refresh_token,password
     resource:
-      id: service-all
+      id: service-wtim
       user-info-uri: http://localhost:8000/user/principal/get
       prefer-token-info: false
 

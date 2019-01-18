@@ -3,6 +3,7 @@ package com.github.willisaway.wtim.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.github.willisaway.wtim.model.BnWorkTrack;
 import com.github.willisaway.wtim.service.BnWorkTrackService;
 import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.exception.BusinessException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,27 +28,31 @@ public class BnWorkTrackController {
 	@ApiOperation(value = "查询（分页）")
 	@RequestMapping("/private/query")
 	public Page<BnWorkTrack> query(@RequestBody Map<String, Object> params) {
-		return  bnWorkTrackService.query(params);
+		return  bnWorkTrackService.queryPage(params);
 	}
 	
 	@ApiOperation(value = "查询单条")
 	@RequestMapping("/private/queryOne")
 	public BnWorkTrack queryOne(@RequestBody Map<String, Object> params) {
-		return  bnWorkTrackService.queryOne(params);
+		return  null;//TODO bnWorkTrackService.queryOne(params);
 	}
+	
+	@ApiOperation(value = "查询单条")
+    @RequestMapping("/public/queryById/{rowId}")
+    public BnWorkTrack queryById(@PathVariable("rowId") Long rowId) {
+        return  bnWorkTrackService.queryById(rowId);
+    }
 	
 	@ApiOperation(value = "新增或修改", notes = "新增或修改")
 	@RequestMapping(value = "/private/update", method = RequestMethod.POST)
 	public ModuleReturn update(@RequestBody BnWorkTrack bnWorkTrack) {
-		ModuleReturn objRtn = new ModuleReturn(1);
+		ModuleReturn objRtn = new ModuleReturn();
 		try {
-			if (objRtn.getReturnValue() > 0) {
-				bnWorkTrack = bnWorkTrackService.update(bnWorkTrack);
-				objRtn.setReturnPara("data", bnWorkTrack);
-			}
+		    bnWorkTrack = bnWorkTrackService.update(bnWorkTrack);
+            objRtn.putData("data", bnWorkTrack);
 		} catch (Exception e) {
 			e.printStackTrace();
-			objRtn.setReturnValue(-1, "保存失败");
+			throw new BusinessException("保存失败");
 		}
 		return objRtn;
 	}

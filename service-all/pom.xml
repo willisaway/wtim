@@ -47,6 +47,11 @@
     </dependency>
     <dependency>
       <groupId>com.github.willisaway</groupId>
+      <artifactId>service-auth-api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.willisaway</groupId>
       <artifactId>service-all-api</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
