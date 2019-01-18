@@ -28,7 +28,7 @@ import com.github.willisaway.core.util.SpringUtil;
 @MapperScan("com.github.willisaway.*.dao")
 @EnableOAuth2Client
 @EnableCaching
-public class AllApplication {
+public class WtimApplication {
 	/**
 	 * 实例化RestTemplate，通过@LoadBalanced注解开启均衡负载能力.
 	 * 
@@ -41,7 +41,7 @@ public class AllApplication {
 	}
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = SpringApplication.run(AllApplication.class, args);
+		ApplicationContext applicationContext = SpringApplication.run(WtimApplication.class, args);
 		SpringUtil.setApplicationContext(applicationContext);
 	}
 }
