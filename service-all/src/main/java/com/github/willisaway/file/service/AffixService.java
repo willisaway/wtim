@@ -164,17 +164,15 @@ public class AffixService extends BaseService<AffixMapper,Affix> {
 		return objRtn;
 	}
 
-	public ModuleReturn delete(Long rowId) {
+	public void delete(Long rowId) {
 		ModuleReturn objRtn = new ModuleReturn();
 		try {
 			Affix affix = queryById(rowId);
-			objRtn = fileSaveService.deleteFile(affix.getFilePath());
-			delete(rowId, smUserClient.getCurrentUserId());
+			fileSaveService.deleteFile(affix.getFilePath());
+			delete(rowId);
 		} catch (Exception e) {
 			logger.error(ExceptionUtil.getStackTraceAsString(e));
 			throw new BusinessException("删除失败");
 		}
-		
-		return objRtn;
 	}
 }

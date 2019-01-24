@@ -3,6 +3,7 @@ package com.github.willisaway.wtim.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.github.willisaway.wtim.model.BnWorkTrack;
 import com.github.willisaway.wtim.service.BnWorkTrackService;
 import com.github.willisaway.core.base.ModuleReturn;
+import com.github.willisaway.core.context.ContextHolder;
 import com.github.willisaway.core.exception.BusinessException;
 
 import io.swagger.annotations.Api;
@@ -25,9 +27,12 @@ public class BnWorkTrackController {
 	@Autowired
 	BnWorkTrackService bnWorkTrackService;
 	
+	//@PreAuthorize("hasAuthority('.RR2')")
 	@ApiOperation(value = "查询（分页）")
 	@RequestMapping("/private/query")
 	public Page<BnWorkTrack> query(@RequestBody Map<String, Object> params) {
+	    ContextHolder.getUserId();
+	    ContextHolder.getUserName();
 		return  bnWorkTrackService.queryPage(params);
 	}
 	

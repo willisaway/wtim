@@ -23,7 +23,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery.mhwz.net:8761/eureka/
+      defaultZone: http://discovery:8761/eureka/
   instance:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
@@ -36,11 +36,11 @@ security:
       client-secret: client
       scope: read,write,xx
       auto-approve-scopes: '.*'
-      access-token-uri: http://localhost:8000/oauth/token
-      user-authorization-uri: http://localhost:8000/oauth/authorize
+      access-token-uri: http://gateway:8080/SERVICE-AUTH/oauth/token
+      user-authorization-uri: http://gateway:8080/SERVICE-AUTH/oauth/authorize
       authorized-grant-types: authorization_code,refresh_token,password
     resource:
       id: service-wtim
-      user-info-uri: http://localhost:8000/user/principal/get
+      user-info-uri: http://gateway:8080/SERVICE-AUTH/user/principal/get
       prefer-token-info: false
 

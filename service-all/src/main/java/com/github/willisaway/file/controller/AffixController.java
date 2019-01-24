@@ -33,7 +33,7 @@ import com.github.willisaway.auth.api.SmUserClient;
 // @CrossOrigin
 @RestController
 @RequestMapping(value = "affix")
-public class AffixController extends BaseController {
+public class AffixController extends BaseController<AffixService,Affix> {
 	@Autowired
 	private AffixService affixService;
 	
@@ -66,12 +66,6 @@ public class AffixController extends BaseController {
 		}
 		List<ModuleReturn> objRtns = affixService.uploads(request, response, param);
 		return objRtns;
-	}
-	
-	@PostMapping("/delete/{rowId}")
-	public ModuleReturn delete(@PathVariable("rowId") Long rowId)throws Exception {
-		ModuleReturn objRtn = affixService.delete(rowId);
-		return objRtn;
 	}
 
 	/**
@@ -122,14 +116,6 @@ public class AffixController extends BaseController {
 		params.put("affixType", affixType);
 		List<Affix> attachList = null;//TODO affixService.queryAll(params);
 		return attachList;
-	}
-	
-	@PostMapping("/queryPage")
-	public ModuleReturn queryPage(@RequestBody Map<String, Object> params)throws Exception {
-		ModuleReturn objRtn = new ModuleReturn();
-		Page<Affix> affixList = null;//TODO affixService.query(params);
-		objRtn.putData("affixList", affixList);
-		return objRtn;
 	}
 
 	@RequestMapping("/queryById")
