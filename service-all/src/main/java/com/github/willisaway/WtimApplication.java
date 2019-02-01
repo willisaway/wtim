@@ -18,7 +18,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.web.client.RestTemplate;
 
 import com.github.willisaway.core.annotation.ExcludeFromComponentScan;
-import com.github.willisaway.core.loadbalancer.RibbonConfiguration;
 import com.github.willisaway.core.util.SpringUtil;
 
 @SpringBootApplication

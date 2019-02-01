@@ -32,14 +32,14 @@ public class BnWorkTrackController {
 	@RequestMapping("/private/query")
 	public Page<BnWorkTrack> query(@RequestBody Map<String, Object> params) {
 	    ContextHolder.getUserId();
-	    ContextHolder.getUserName();
+	    //throw new BusinessException("出错啦");
 		return  bnWorkTrackService.queryPage(params);
 	}
 	
 	@ApiOperation(value = "查询单条")
 	@RequestMapping("/private/queryOne")
 	public BnWorkTrack queryOne(@RequestBody Map<String, Object> params) {
-		return  null;//TODO bnWorkTrackService.queryOne(params);
+		return  bnWorkTrackService.queryOne(params);
 	}
 	
 	@ApiOperation(value = "查询单条")
