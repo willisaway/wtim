@@ -42,7 +42,7 @@
     
     <dependency>
       <groupId>com.github.willisaway</groupId>
-      <artifactId>common-auth-server</artifactId>
+      <artifactId>common-resource-server</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
